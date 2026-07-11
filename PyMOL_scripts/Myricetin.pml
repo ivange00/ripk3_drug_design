@@ -1,0 +1,26 @@
+load ../swissdock_results\receptor.pdb, receptor
+load ../ligands_PDBs\Myricetin.pdb, Myricetin
+util.cba(33,"receptor",_self=cmd)
+space cmyk
+cmd.color_deep("gray80", "receptor", 0)
+set cartoon_transparency, 0.8
+distance d1, /receptor/1S//ASP`161/HN, Myricetin/LIG//LIG`1/H5, state=2
+cmd.show("sticks", "/receptor/1S//ASP`161")
+util.cnc("/receptor/1S//ASP`161",_self=cmd)
+set stick_radius, 0.25, receptor and resi 161
+label receptor and resi 161 and name CA, "%s%s" % (resn, resi)
+distance d2, /receptor/1S//GLU`61/OE2, Myricetin/LIG//LIG`1/H6, state=2
+cmd.show("sticks", "/receptor/1S//GLU`61")
+util.cnc("/receptor/1S//GLU`61",_self=cmd)
+set stick_radius, 0.25, receptor and resi 61
+label receptor and resi 61 and name CA, "%s%s" % (resn, resi)
+distance d3, /receptor/1S//LEU`93/HB2, Myricetin/LIG//LIG`1/H8, state=2
+cmd.show("sticks", "/receptor/1S//LEU`93")
+util.cnc("/receptor/1S//LEU`93",_self=cmd)
+set stick_radius, 0.25, receptor and resi 93
+label receptor and resi 93 and name CA, "%s%s" % (resn, resi)
+frame 2
+set label_size, 18
+set label_color, black
+set opaque_background, 0
+png ../figures\Myricetin.png, 0, 0, -1, ray=1
